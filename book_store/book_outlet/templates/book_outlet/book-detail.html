@@ -6,7 +6,7 @@
 
 {% block page_content %}
     <h1>{{ book.title }}</h1>
-    <p>Author: {{ book.author }}</p>
+    <p>Author: {{ book.author.last_name }}, {{ book.author.first_name }}</p>
     <p>Rating: {{ book.rating }}</p>
     {% if book.is_bestselling %}
         <p>This is a bestseller!</p>

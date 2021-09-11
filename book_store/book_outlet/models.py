@@ -8,8 +8,11 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
+    def full_name(self):
+        return f"{self.last_name}, {self.first_name}"
+
     def __str__(self):
-        return f"{self.last_name}. {self.first_name}"
+        return self.full_name()
 
 
 class Book(models.Model):
@@ -19,7 +22,7 @@ class Book(models.Model):
     )
     is_bestselling = models.BooleanField(default=False)
     slug = models.SlugField(primary_key=True)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, related_name='books')
 
 
     def get_absolute_url(self):

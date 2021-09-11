@@ -4,9 +4,22 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+class Address(models.Model):
+    street = models.CharField(max_length=80)
+    postal_code = models.CharField(max_length=6)
+    city = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.street}, {self.postal_code}, {self.city}"
+
+    class Meta:
+        verbose_name_plural = 'Address'
+
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    address = models.OneToOneField(Address, on_delete=models.SET_NULL, null=True)
 
     def full_name(self):
         return f"{self.last_name}, {self.first_name}"

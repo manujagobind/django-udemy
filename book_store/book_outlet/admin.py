@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.db import models
 
-from .models import Author, Book
+from .models import Author, Book, Address
 
 
 class BookAdmin(admin.ModelAdmin):
@@ -8,5 +9,6 @@ class BookAdmin(admin.ModelAdmin):
     readonly_fields = ('slug',)
 
 
+admin.site.register(Address)
 admin.site.register(Author)
 admin.site.register(Book, BookAdmin)

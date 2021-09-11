@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    All Books
+{% endblock %}
+
+{% block page_content %}
+    <h1>All Books</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="/book/{{ book.slug }}">{{ book.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Total Number of Books</h1>
+    <p>{{ book_count }}</p>
+    <h1>Average Rating<h1>
+    <p>{{ avg_rating }}
+{% endblock %}

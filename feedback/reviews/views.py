@@ -7,9 +7,11 @@ from .forms import ReviewForm
 
 def review(request):
     if request.method == 'POST':
-        return HttpResponseRedirect("/thank-you")
-
-    form = ReviewForm()
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("/thank-you")
+    else:
+        form = ReviewForm()
     return render(request, 'reviews/review.html', {
         "form": form
     })

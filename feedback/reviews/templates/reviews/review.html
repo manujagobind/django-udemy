@@ -8,8 +8,7 @@
     <body>
         <form action="/" method="POST">
             {% csrf_token %}
-            <label for="username">Your Name</label>
-            <input id="username" type="next" name="username">
+            {{ form }}
             <button>Send</button>
         </form>
     </body>
